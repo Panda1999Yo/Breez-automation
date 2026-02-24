@@ -14,7 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 desired_caps = {
     "platformName": "Android",
     "deviceName": "Galaxy Tab A9+",
-    "udid": "adb-R52WA06RVNX-RmjfmH._adb-tls-connect._tcp",
+    "udid": "R52WA06RVNX",
     "platformVersion": "16",
     "appPackage": "com.cyntra.voicebreeze",
     "appActivity": "com.cyntra.voicebreeze.ui.screens.splash.SplashActivity",
@@ -1064,7 +1064,7 @@ class BreezAutomation(unittest.TestCase):
 
         Flat_noodles = self.wait_for_element(
             AppiumBy.XPATH,
-            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[1]"
         )
         self.assertIsNotNone(Flat_noodles, "Flat noodles field not found")
         Flat_noodles.click()
@@ -1078,21 +1078,21 @@ class BreezAutomation(unittest.TestCase):
         Modifiers.click()
         time.sleep(3)
 
-        Qunatity = self.wait_for_element(
-            AppiumBy.XPATH,
-            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
-        )
-        self.assertIsNotNone(Qunatity, "Quantity field not found")
-        Qunatity.click()
-        time.sleep(3)
+        # Qunatity = self.wait_for_element(
+            # AppiumBy.XPATH,
+            # "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
+        # )
+        # self.assertIsNotNone(Qunatity, "Quantity field not found")
+        # Qunatity.click()
+        # time.sleep(3)
 
-        Repeat = self.wait_for_element(
-            AppiumBy.XPATH,
-            "//android.widget.TextView[@text='Repeat Last']"
-        )
-        self.assertIsNotNone(Repeat, "Repeat field not found")
-        Repeat.click()
-        time.sleep(3)
+        # Repeat = self.wait_for_element(
+            # AppiumBy.XPATH,
+            # "//android.widget.TextView[@text='Repeat Last']"
+        # )
+        # self.assertIsNotNone(Repeat, "Repeat field not found")
+        # Repeat.click()
+        # time.sleep(3)
 
         CHeckout = self.wait_for_element(
             AppiumBy.XPATH,
@@ -1125,53 +1125,845 @@ class BreezAutomation(unittest.TestCase):
         Neworder.click()
 
 
+    # -----------------------------
+    # Test Case 12
+    # -----------------------------
+    def test_12_Verify_User_can_Logout_the_and_relogin_same_user(self):
+        print("Test Case 12: Verify user can logout and relogin same user")
+
+        time.sleep(3)
+
+        Touch_to_start = self.wait_for_element(
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            "new UiSelector().className(\"android.view.View\").instance(3)"
+        )
+        self.assertIsNotNone(Touch_to_start, "Touch to start field not found")
+        Touch_to_start.click() 
+ 
+        time.sleep(3)
+
+        Takeaway = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View[2]/android.view.View[1]"
+        )
+        self.assertIsNotNone(Takeaway, "Takeaway field not found")
+        Takeaway.click()
+
+        Phone_Number = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Phone_Number, "Phone number field not found")
+        Phone_Number.click()
+        Phone_Number.send_keys("9318392530")
+        time.sleep(2)
+
+        Logout = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[2]"
+        )
+        self.assertIsNotNone(Logout, "Logout field not found")
+        Logout.click()
+        time.sleep(2)
+
+        Yes = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Yes']"
+        )
+        self.assertIsNotNone(Yes, "Yes field not found")
+        Yes.click()
+
+    # -----------------------------
+    # Test Case 13
+    # -----------------------------
+    def test_13_Verify_User_can_Clear_the_cart(self):
+        print("Test Case 13: Verify user can clear the cart")
+ 
+        time.sleep(3)
+
+        Takeaway = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View[2]/android.view.View[1]"
+        )
+        self.assertIsNotNone(Takeaway, "Takeaway field not found")
+        Takeaway.click()
+
+
+        Phone_Number = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Phone_Number, "Phone number field not found")
+        Phone_Number.click()
+        Phone_Number.send_keys("9318392530")
+        time.sleep(10)
+
+        New_order = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]"
+        )
+        self.assertIsNotNone(New_order, "New order field not found")
+        time.sleep(3)
+        New_order.click()
+
+        Flat_noodles = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
+        )
+        self.assertIsNotNone(Flat_noodles, "Flat noodles field not found")
+        Flat_noodles.click()
+        time.sleep(3)
+
+        Modifiers = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Add to Cart']"
+        )
+        self.assertIsNotNone(Modifiers, "Modifiers field not found")
+        Modifiers.click()
+        time.sleep(3)
+
+        Clear_cart = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Clear all']"
+        )
+        self.assertIsNotNone(Clear_cart, "Clear cart field not found")
+        Clear_cart.click()
+        time.sleep(3)
+
+        Yes = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Yes']"
+        )
+        self.assertIsNotNone(Yes, "Yes field not found")
+        Yes.click()
+        time.sleep(3)
 
 
 
+    # -----------------------------
+    # Test Case 14
+    # -----------------------------
+    def test_14_Verify_User_can_Apply_the_tip(self):
+        print("Test Case 14: Verify user can apply the tip")
+
+        time.sleep(3)
+
+        
+        Flat_noodles = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
+        )
+        self.assertIsNotNone(Flat_noodles, "Flat noodles field not found")
+        Flat_noodles.click()
+        time.sleep(3)
+
+        Modifiers = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Add to Cart']"
+        )
+        self.assertIsNotNone(Modifiers, "Modifiers field not found")
+        Modifiers.click()
+        time.sleep(3)
+
+        CHeckout = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Checkout']"
+        )
+        self.assertIsNotNone(CHeckout, "Checkout field not found")
+        CHeckout.click()
+
+        Paynow = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Pay Now']"
+        )
+        self.assertIsNotNone(Paynow, "Pay now field not found")
+        Paynow.click()
+        time.sleep(2)
+
+        Tip = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[3]/android.view.View[4]"
+        )
+        self.assertIsNotNone(Tip, "Tip field not found")
+        Tip.click()
+        time.sleep(2)
+
+        Cash = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View"
+        )
+        self.assertIsNotNone(Cash, "Cash field not found")
+        Cash.click()
+        time.sleep(2)
+
+        Neworder = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View"
+        )
+        self.assertIsNotNone(Neworder, "New order field not found")
+        Neworder.click()
+  
 
 
+    # -----------------------------
+    # Test Case 15
+    # -----------------------------
+    def test_15_Verify_User_can_Chosses_different_category(self):
+        print("Test Case 15: Verify user can choose different category")
+
+        time.sleep(3)
+
+        Touch_to_start = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[1]"
+        )
+        self.assertIsNotNone(Touch_to_start, "Touch to start field not found")
+        Touch_to_start.click()
+
+        time.sleep(3)
+
+        Takeaway = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View[2]/android.view.View[1]"
+        )
+        self.assertIsNotNone(Takeaway, "Takeaway field not found")
+        Takeaway.click()
 
 
+        Phone_Number = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Phone_Number, "Phone number field not found")
+        Phone_Number.click()
+        Phone_Number.send_keys("9318392530")
+        time.sleep(10)
+
+        New_order = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]"
+        )
+        self.assertIsNotNone(New_order, "New order field not found")
+        time.sleep(3)
+        New_order.click()
+
+        Special = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]"
+        )
+        self.assertIsNotNone(Special, "Special field not found")
+        time.sleep(3)
+        Special.click()
+
+        Soups = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]/android.view.View[3]"
+        )
+        self.assertIsNotNone(Soups, "Soups & Noodles field not found")
+        time.sleep(3)
+        Soups.click()   
+
+        Curries = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]/android.view.View[4]"
+        )
+        self.assertIsNotNone(Curries, "Curries field not found")
+        time.sleep(3)
+        Curries.click()  
+
+        Green = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[1]"
+        )
+        self.assertIsNotNone(Green, "Green field not found")
+        time.sleep(3)
+        Green.click() 
+
+        CHeckout = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Checkout']"
+        )
+        self.assertIsNotNone(CHeckout, "Checkout field not found")
+        CHeckout.click()
+
+        Paynow = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Pay Now']"
+        )
+        self.assertIsNotNone(Paynow, "Pay now field not found")
+        Paynow.click()
+        time.sleep(2)
+
+        Tip = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[2]/android.view.View[4]"
+        )
+        self.assertIsNotNone(Tip, "Tip field not found")
+        Tip.click()
+        time.sleep(2)
+
+        Cash = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]/android.view.View"
+        )
+        self.assertIsNotNone(Cash, "Cash field not found")
+        Cash.click()
+        time.sleep(2)
+
+        Neworder = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View"
+        )
+        self.assertIsNotNone(Neworder, "New order field not found")
+        Neworder.click()    
+
+    # -----------------------------
+    # Test Case 16
+    # -----------------------------
+    def test_16_Verify_User_can_Enter_the_Item_level_Special_request(self):
+        print("Test Case 16: Verify user can enter item level special request")
+
+        time.sleep(2)
+
+        Touch_to_start = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[1]"
+        )
+        self.assertIsNotNone(Touch_to_start, "Touch to start field not found")
+        Touch_to_start.click()
+
+        time.sleep(3)
+
+        Takeaway = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View[2]/android.view.View[1]"
+        )
+        self.assertIsNotNone(Takeaway, "Takeaway field not found")
+        Takeaway.click()
 
 
+        Phone_Number = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Phone_Number, "Phone number field not found")
+        Phone_Number.click()
+        Phone_Number.send_keys("9318392530")
+        time.sleep(10)
+
+        New_order = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]"
+        )
+        self.assertIsNotNone(New_order, "New order field not found")
+        time.sleep(3)
+        New_order.click()
+
+        Flat_noodles = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
+        )
+        self.assertIsNotNone(Flat_noodles, "Flat noodles field not found")
+        Flat_noodles.click()
+        time.sleep(3)
 
 
+        Note = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Note to Kitchen']"
+        )
+        self.assertIsNotNone(Note, "Note field not found")
+        Note.click()
+        time.sleep(3)
 
 
+        Note = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Note, "Note field not found")
+        Note.click()
+        Note.send_keys("Please make it spicy")
+        time.sleep(3)
+
+        Submit = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Submit']"
+        )
+        self.assertIsNotNone(Submit, "Submit button not found")
+        Submit.click()
+        time.sleep(3)
+
+        Modifiers = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Add to Cart']"
+        )
+        self.assertIsNotNone(Modifiers, "Modifiers field not found")
+        Modifiers.click()
+        time.sleep(3)
+
+        CHeckout = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Checkout']"
+        )
+        self.assertIsNotNone(CHeckout, "Checkout field not found")
+        CHeckout.click()
+
+        Paynow = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Pay Now']"
+        )
+        self.assertIsNotNone(Paynow, "Pay now field not found")
+        Paynow.click()
+        time.sleep(2)
+
+        Tip = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[3]/android.view.View[4]"
+        )
+        self.assertIsNotNone(Tip, "Tip field not found")
+        Tip.click()
+        time.sleep(2)
+
+        Cash = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View"
+        )
+        self.assertIsNotNone(Cash, "Cash field not found")
+        Cash.click()
+        time.sleep(2)
+
+        Neworder = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View"
+        )
+        self.assertIsNotNone(Neworder, "New order field not found")
+        Neworder.click()
+  
+
+    # -----------------------------
+    # Test Case 17
+    # -----------------------------
+    def test_17_Verify_User_can_Select_the_combo_items(self):
+        print("Test Case 17: Verify user can select the combo items")
+
+        time.sleep(2)
+
+        Touch_to_start = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[1]"
+        )
+        self.assertIsNotNone(Touch_to_start, "Touch to start field not found")
+        Touch_to_start.click()
+
+        time.sleep(3)
+
+        Takeaway = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View[2]/android.view.View[1]"
+        )
+        self.assertIsNotNone(Takeaway, "Takeaway field not found")
+        Takeaway.click()
 
 
+        Phone_Number = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Phone_Number, "Phone number field not found")
+        Phone_Number.click()
+        Phone_Number.send_keys("9318392530")
+        time.sleep(10)
+
+        New_order = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]"
+        )
+        self.assertIsNotNone(New_order, "New order field not found")
+        time.sleep(3)
+        New_order.click()
+
+        Soups = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]/android.view.View[3]"
+        )
+        self.assertIsNotNone(Soups, "Soups field not found")
+        time.sleep(3)
+        Soups.click()
+  
+        Yellow = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[5]"
+        )
+        self.assertIsNotNone(Yellow, "Yellow field not found")
+        time.sleep(3)
+        Yellow.click()
+  
+        Meal = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[2]"
+        )
+        self.assertIsNotNone(Meal, "Meal field not found")
+        time.sleep(3)
+        Meal.click()
 
 
+        Combo = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[2]/android.view.View"
+        )
+        self.assertIsNotNone(Combo, "Combo field not found")
+        time.sleep(3)
+        Combo.click()
+
+        Add = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Add to Cart ₹372.00']"
+        )
+        self.assertIsNotNone(Add, "Add field not found")
+        time.sleep(3)
+        Add.click()
+
+        CHeckout = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Checkout']"
+        )
+        self.assertIsNotNone(CHeckout, "Checkout field not found")
+        CHeckout.click()
+
+        Paynow = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Pay Now']"
+        )
+        self.assertIsNotNone(Paynow, "Pay now field not found")
+        Paynow.click()
+        time.sleep(2)
+
+        cash = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View"
+        )
+        self.assertIsNotNone(cash, "Cash field not found")
+        cash.click()
+        time.sleep(2)
+
+        Neworder = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View"
+        )
+        self.assertIsNotNone(Neworder, "New order field not found")
+        Neworder.click()
 
 
+    # -----------------------------
+    # Test Case 18
+    # -----------------------------
+    def test_18_Verify_User_can_Select_the_addons(self):
+        print("Test Case 18: Verify user can select the addons")
+
+        time.sleep(2)
+
+        Touch_to_start = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[1]"
+        )
+        self.assertIsNotNone(Touch_to_start, "Touch to start field not found")
+        Touch_to_start.click()
+
+        time.sleep(3)
+
+        Takeaway = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View[2]/android.view.View[1]"
+        )
+        self.assertIsNotNone(Takeaway, "Takeaway field not found")
+        Takeaway.click()
 
 
+        Phone_Number = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Phone_Number, "Phone number field not found")
+        Phone_Number.click()
+        Phone_Number.send_keys("9318392530")
+        time.sleep(10)
+
+        New_order = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]"
+        )
+        self.assertIsNotNone(New_order, "New order field not found")
+        time.sleep(3)
+        New_order.click()
+
+        Soups = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]/android.view.View[3]"
+        )
+        self.assertIsNotNone(Soups, "Soups field not found")
+        time.sleep(3)
+        Soups.click()
+  
+        Asian = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
+        )
+        self.assertIsNotNone(Asian, "Asian field not found")
+        time.sleep(3)
+        Asian.click() 
+
+        Addons = self.wait_for_element(
+            AppiumBy.XPATH,
+            "(//android.widget.TextView[@text='Add'])[1]"
+        )
+        self.assertIsNotNone(Addons, "Addons field not found")
+        time.sleep(3)
+        Addons.click() 
+
+        Add = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Add to Cart']"
+        )
+        self.assertIsNotNone(Add, "Add field not found")
+        time.sleep(3)
+        Add.click()
+        
+        CHeckout = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Checkout']"
+        )
+        self.assertIsNotNone(CHeckout, "Checkout field not found")
+        CHeckout.click()
+
+        Paynow = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Pay Now']"
+        )
+        self.assertIsNotNone(Paynow, "Pay now field not found")
+        Paynow.click()
+        time.sleep(2)
+
+        cash = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View"
+        )
+        self.assertIsNotNone(cash, "Cash field not found")
+        cash.click()
+        time.sleep(2)
+
+        Neworder = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View"
+        )
+        self.assertIsNotNone(Neworder, "New order field not found")
+        Neworder.click()
 
 
+    # -----------------------------
+    # Test Case 19
+    # -----------------------------
+    def test_19_Verify_User_can_Select_the_Custom_tip(self):
+        print("Test Case 19: Verify user can select the custom tip")
+
+        time.sleep(2)
+
+        Touch_to_start = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[1]"
+        )
+        self.assertIsNotNone(Touch_to_start, "Touch to start field not found")
+        Touch_to_start.click()
+
+        time.sleep(3)
+
+        Takeaway = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View[2]/android.view.View[1]"
+        )
+        self.assertIsNotNone(Takeaway, "Takeaway field not found")
+        Takeaway.click()
 
 
+        Phone_Number = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Phone_Number, "Phone number field not found")
+        Phone_Number.click()
+        Phone_Number.send_keys("9318392530")
+        time.sleep(10)
+
+        New_order = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]"
+        )
+        self.assertIsNotNone(New_order, "New order field not found")
+        time.sleep(3)
+        New_order.click()
+
+        Flat_noodles = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
+        )
+        self.assertIsNotNone(Flat_noodles, "Flat noodles field not found")
+        Flat_noodles.click()
+        time.sleep(3)
+
+        Modifiers = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Add to Cart']"
+        )
+        self.assertIsNotNone(Modifiers, "Modifiers field not found")
+        Modifiers.click()
+        time.sleep(3)
+
+        CHeckout = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Checkout']"
+        )
+        self.assertIsNotNone(CHeckout, "Checkout field not found")
+        CHeckout.click()
+
+        Paynow = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Pay Now']"
+        )
+        self.assertIsNotNone(Paynow, "Pay now field not found")
+        Paynow.click()
+        time.sleep(2)
+
+        Customtip = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Customtip, "Custom tip field not found")
+        Customtip.click()
+        time.sleep(2)
+        Customtip.send_keys("10")
+
+        Cash = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View"
+        )
+        self.assertIsNotNone(Cash, "Cash field not found")
+        Cash.click()
+        time.sleep(2)
 
 
+    # -----------------------------
+    # Test Case 20
+    # -----------------------------
+    def test_20_Verify_User_can_reselect_the_same_items(self):
+        print("Test Case 20: Verify user can reselect the same items")
+
+        time.sleep(2)
+
+        Touch_to_start = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[1]"
+        )
+        self.assertIsNotNone(Touch_to_start, "Touch to start field not found")
+        Touch_to_start.click()
+
+        time.sleep(3)
+
+        Takeaway = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View[2]/android.view.View[1]"
+        )
+        self.assertIsNotNone(Takeaway, "Takeaway field not found")
+        Takeaway.click()
 
 
+        Phone_Number = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Phone_Number, "Phone number field not found")
+        Phone_Number.click()
+        Phone_Number.send_keys("9318392530")
+        time.sleep(10)
 
+        New_order = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[4]"
+        )
+        self.assertIsNotNone(New_order, "New order field not found")
+        time.sleep(3)
+        New_order.click()
 
+        Flat_noodles = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
+        )
+        self.assertIsNotNone(Flat_noodles, "Flat noodles field not found")
+        Flat_noodles.click()
+        time.sleep(3)
 
+        Modifiers = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Add to Cart']"
+        )
+        self.assertIsNotNone(Modifiers, "Modifiers field not found")
+        Modifiers.click()
+        time.sleep(3)
 
+        Flat_noodles1 = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]"
+        )
+        self.assertIsNotNone(Flat_noodles1, "Flat noodles field not found")
+        Flat_noodles1.click()
+        time.sleep(3)
 
+        Choose = self.wait_for_element(
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            "new UiSelector().text(\"I'll Choose\")"
+        )
+        self.assertIsNotNone(Choose, "Choose field not found")
+        Choose.click()
+        time.sleep(3)
 
+        Modifiers1 = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Add to Cart']"
+        )
+        self.assertIsNotNone(Modifiers1, "Modifiers field not found")
+        Modifiers1.click()
+        time.sleep(3)
 
+        CHeckout = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Checkout']"
+        )
+        self.assertIsNotNone(CHeckout, "Checkout field not found")
+        CHeckout.click()
 
+        Paynow = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.TextView[@text='Pay Now']"
+        )
+        self.assertIsNotNone(Paynow, "Pay now field not found")
+        Paynow.click()
+        time.sleep(2)
 
+        Customtip = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//android.widget.EditText"
+        )
+        self.assertIsNotNone(Customtip, "Custom tip field not found")
+        Customtip.click()
+        time.sleep(2)
+        Customtip.send_keys("10")
 
-
-
-
-
-
-
-
-
+        Cash = self.wait_for_element(
+            AppiumBy.XPATH,
+            "//androidx.compose.ui.platform.ComposeView[@resource-id='com.cyntra.voicebreeze:id/composeView']/android.view.View/android.view.View/android.view.View[5]/android.view.View"
+        )
+        self.assertIsNotNone(Cash, "Cash field not found")
+        Cash.click()
+        time.sleep(2)
 
 
 
